@@ -1,4 +1,4 @@
-package MyImplementations.MyLinkedList;
+package MyImplementations.myLinkedList;
 
 import java.util.Objects;
 
