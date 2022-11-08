@@ -26,6 +26,17 @@ public class MyHashMap<K, V> implements HashMap<K, V> {
         public void setValue(V value) {
             this.value = value;
         }
+
+        @Override
+        public String toString() {
+            Entry<K,V> entry = this;
+            StringBuilder sb = new StringBuilder();
+            while (entry != null) {
+                sb.append("key: " + entry.key + " -> value:" + entry.value + "| ");
+                entry = entry.next;
+            }
+            return sb.toString();
+        }
     }
 
     private final int SIZE = 10;
@@ -45,11 +56,11 @@ public class MyHashMap<K, V> implements HashMap<K, V> {
 
         if (entry == null) {
             mapTable[hashCode] = new Entry<>(key, value);
+            mapSize++;
         } else {
             while (entry.next != null) {
                 if (entry.getKey() == key) {
                     entry.setValue(value);
-                    mapSize++;
                     return;
                 }
                 entry = entry.next;
@@ -57,7 +68,6 @@ public class MyHashMap<K, V> implements HashMap<K, V> {
 
             if (entry.getKey() == key) {
                 entry.setValue(value);
-                mapSize++;
                 return;
             }
 
@@ -96,6 +106,7 @@ public class MyHashMap<K, V> implements HashMap<K, V> {
                 if (entry.getKey() == key) {
                     mapTable[hashCode] = entry.next;
                     entry.next = null;
+                    mapSize--;
                     return true;
                 }
 
@@ -106,6 +117,7 @@ public class MyHashMap<K, V> implements HashMap<K, V> {
                 if (entry.getKey() == key) {
                     previous.next = entry.next;
                     entry.next = null;
+                    mapSize--;
                     return true;
                 }
 
