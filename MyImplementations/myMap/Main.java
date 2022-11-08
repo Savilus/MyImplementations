@@ -1,4 +1,4 @@
-package MyImplementations;
+package MyImplementations.myMap;
 
 import MyImplementations.myMap.MyHashMap;
 
