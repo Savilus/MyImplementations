@@ -12,6 +12,7 @@ public class ListMain {
         MyArrayList myArrayList = new MyArrayList();
         MyArrayList myArrayList2 = new MyArrayList();
 
+        myArrayList.add(new Data<>("String"));
         List<Integer> test2 = new ArrayList<>();
         
         test2.add(3);
